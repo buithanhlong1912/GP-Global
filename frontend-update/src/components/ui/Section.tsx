@@ -106,7 +106,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionHeaderProps>(
           {title}
         </h2>
         {description && (
-          <p className="mt-4 text-lg text-white leading-relaxed">
+          <p className="mt-4 text-lg text-gray-500 leading-relaxed">
             {description}
           </p>
         )}

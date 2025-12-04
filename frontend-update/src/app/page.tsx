@@ -74,7 +74,7 @@ export default function HomePage() {
 
           {/* Right - Content */}
           <div>
-            <Badge variant="interior" className="mb-4">
+            <Badge variant="interior" className="mb-4 !px-4 !py-2">
               Về chúng tôi
             </Badge>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-gray-900 mb-6">
