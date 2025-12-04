@@ -57,16 +57,18 @@ export default function HomePage() {
             </div>
 
             {/* Floating Stats Card */}
-            <div className="absolute -bottom-0 -right-0 bg-white p-6 rounded-2xl shadow-xl">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 bg-[#1a365d] rounded-xl flex items-center justify-center">
-                  <Award className="w-8 h-8 text-[#c9a962]" />
+            <div className="absolute -bottom-0 -right-0 bg-white p-3 sm:p-4 md:p-6 rounded-2xl shadow-xl max-w-[calc(100%-1rem)]">
+              <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-[#1a365d] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Award className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#c9a962]" />
                 </div>
-                <div>
-                  <span className="block text-3xl font-bold text-[#1a365d]">
+                <div className="w-[90px] sm:w-[120px] md:w-[160px] lg:w-[180px] xl:w-[200px] min-w-0">
+                  <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-[#1a365d] leading-tight">
                     10+
                   </span>
-                  <span className="text-gray-600">Năm kinh nghiệm</span>
+                  <span className="text-gray-600 text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-base leading-tight">
+                    Năm kinh nghiệm
+                  </span>
                 </div>
               </div>
             </div>
