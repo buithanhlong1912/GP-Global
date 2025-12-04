@@ -1,28 +1,28 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { Section, SectionHeader, Button } from "@/components/ui";
-import { INTERIOR_SERVICES, JOB_CATEGORIES } from "@/lib/constants";
+import { Button, Section, SectionHeader } from '@/components/ui';
+import { INTERIOR_SERVICES, JOB_CATEGORIES } from '@/lib/constants';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 import {
-  Building2,
-  Users,
   ArrowRight,
-  Palette,
-  Layers,
-  Settings,
-  Signpost,
-  Coffee,
-  Store,
-  Package,
-  Factory,
-  ShoppingBag,
   Building,
-  Wrench,
+  Building2,
+  Coffee,
+  Factory,
+  Layers,
   LucideIcon,
-} from "lucide-react";
+  Package,
+  Palette,
+  Settings,
+  ShoppingBag,
+  Signpost,
+  Store,
+  Users,
+  Wrench,
+} from 'lucide-react';
+import Link from 'next/link';
+import { useState } from 'react';
 
 const iconMap: Record<string, LucideIcon> = {
   Palette,
@@ -40,10 +40,12 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 export function ServicesSection() {
-  const [activeTab, setActiveTab] = useState<"interior" | "staffing">("interior");
+  const [activeTab, setActiveTab] = useState<'interior' | 'staffing'>(
+    'interior',
+  );
 
   return (
-    <Section padding="xl">
+    <Section padding="xl" className="!p-4">
       <SectionHeader
         subtitle="Dịch vụ của chúng tôi"
         title="Giải Pháp Toàn Diện"
@@ -52,26 +54,26 @@ export function ServicesSection() {
 
       {/* Tab Switcher */}
       <div className="flex justify-center mb-12">
-        <div className="inline-flex p-1.5 bg-gray-100 rounded-xl">
+        <div className="inline-flex gap-4 p-1.5 rounded-xl">
           <button
-            onClick={() => setActiveTab("interior")}
+            onClick={() => setActiveTab('interior')}
             className={cn(
-              "flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300",
-              activeTab === "interior"
-                ? "bg-[#1a365d] text-white shadow-lg"
-                : "text-gray-600 hover:text-gray-900"
+              'flex items-center gap-2 !px-6 !py-3 rounded-lg font-semibold transition-all duration-300 cursor-pointer',
+              activeTab === 'interior'
+                ? 'bg-[#1a365d] text-white shadow-lg'
+                : 'text-gray-600 hover:text-gray-900',
             )}
           >
             <Building2 className="w-5 h-5" />
             Nội thất
           </button>
           <button
-            onClick={() => setActiveTab("staffing")}
+            onClick={() => setActiveTab('staffing')}
             className={cn(
-              "flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-300",
-              activeTab === "staffing"
-                ? "bg-[#065f46] text-white shadow-lg"
-                : "text-gray-600 hover:text-gray-900"
+              'flex items-center gap-2 !px-6 !py-3 rounded-lg font-semibold transition-all duration-300 text-[#1a365d] border-2 cursor-pointer hover:bg-[#1a365d] hover:text-white',
+              activeTab === 'staffing'
+                ? 'bg-[#065f46] text-white shadow-lg border-[#065f46] hover:bg-[#065f46] hover:text-white'
+                : 'text-gray-600',
             )}
           >
             <Users className="w-5 h-5" />
@@ -81,11 +83,12 @@ export function ServicesSection() {
       </div>
 
       {/* Interior Services */}
-      {activeTab === "interior" && (
+      {activeTab === 'interior' && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
+          className="!mt-4 flex flex-col gap-4"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {INTERIOR_SERVICES.map((service, index) => {
@@ -100,7 +103,7 @@ export function ServicesSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    className="relative h-full p-6 bg-white rounded-2xl border border-gray-100 hover:shadow-xl hover:border-[#c9a962] transition-all duration-300"
+                    className="relative h-full !p-4 bg-white rounded-2xl border border-gray-100 hover:shadow-xl hover:border-[#c9a962] transition-all duration-300"
                   >
                     {/* Image Background */}
                     <div className="relative h-48 -mx-6 -mt-6 mb-6 rounded-t-2xl overflow-hidden">
@@ -138,7 +141,12 @@ export function ServicesSection() {
           {/* CTA */}
           <div className="mt-10 text-center">
             <Link href="/noi-that/dich-vu">
-              <Button variant="interior" size="lg" rightIcon={<ArrowRight className="w-5 h-5" />}>
+              <Button
+                variant="interior"
+                size="lg"
+                rightIcon={<ArrowRight className="w-5 h-5" />}
+                className="!p-2"
+              >
                 Xem tất cả dịch vụ
               </Button>
             </Link>
@@ -147,11 +155,12 @@ export function ServicesSection() {
       )}
 
       {/* Staffing Services / Job Categories */}
-      {activeTab === "staffing" && (
+      {activeTab === 'staffing' && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
+          className="!mt-4 flex flex-col gap-4"
         >
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {JOB_CATEGORIES.map((category, index) => {
@@ -165,7 +174,7 @@ export function ServicesSection() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.05 }}
-                    className="group p-6 bg-white rounded-2xl border border-gray-100 hover:shadow-xl hover:border-[#34d399] transition-all duration-300 text-center"
+                    className="group flex flex-col items-center justify-center gap-2 !p-4 bg-white rounded-2xl border border-gray-100 hover:shadow-xl hover:border-[#34d399] transition-all duration-300 text-center"
                   >
                     <div className="w-16 h-16 mx-auto mb-4 bg-[#065f46]/10 rounded-2xl flex items-center justify-center group-hover:bg-[#34d399] transition-colors">
                       <Icon className="w-8 h-8 text-[#065f46] group-hover:text-white transition-colors" />
@@ -189,7 +198,7 @@ export function ServicesSection() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
-              className="p-8 bg-gradient-to-br from-[#065f46] to-[#047857] rounded-2xl text-white"
+              className="!p-8 bg-gradient-to-br from-[#065f46] to-[#047857] rounded-2xl text-white flex flex-col gap-4"
             >
               <h3 className="text-2xl font-bold font-heading mb-4">
                 Dành cho Người tìm việc
@@ -219,6 +228,7 @@ export function ServicesSection() {
                   variant="staffing"
                   size="lg"
                   rightIcon={<ArrowRight className="w-5 h-5" />}
+                  className="!p-2"
                 >
                   Tìm việc ngay
                 </Button>
@@ -230,7 +240,7 @@ export function ServicesSection() {
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
-              className="p-8 bg-white rounded-2xl border-2 border-[#065f46]"
+              className="!p-8 bg-white rounded-2xl border-2 border-[#065f46] flex flex-col gap-4"
             >
               <h3 className="text-2xl font-bold font-heading text-gray-900 mb-4">
                 Dành cho Doanh nghiệp
@@ -259,7 +269,7 @@ export function ServicesSection() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-[#065f46] text-[#065f46] hover:bg-[#065f46] hover:text-white"
+                  className="border-[#065f46] text-[#065f46] hover:bg-[#065f46] hover:text-white !p-2"
                   rightIcon={<ArrowRight className="w-5 h-5" />}
                 >
                   Tìm hiểu thêm
@@ -272,4 +282,3 @@ export function ServicesSection() {
     </Section>
   );
 }
-

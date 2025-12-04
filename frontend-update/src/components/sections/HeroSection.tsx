@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { Container, Button } from "@/components/ui";
+import { Button, Container } from '@/components/ui';
+import { cn } from '@/lib/utils';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
-  Building2,
-  Users,
   ArrowRight,
-  Play,
+  Building2,
   ChevronLeft,
   ChevronRight,
-} from "lucide-react";
+  Play,
+  Users,
+} from 'lucide-react';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 interface HeroSlide {
   id: string;
-  type: "interior" | "staffing";
+  type: 'interior' | 'staffing';
   title: string;
   subtitle: string;
   description: string;
@@ -27,26 +27,28 @@ interface HeroSlide {
 
 const heroSlides: HeroSlide[] = [
   {
-    id: "interior-1",
-    type: "interior",
-    title: "Thiết kế & Thi công Nội thất",
-    subtitle: "Biến Ý Tưởng Thành Hiện Thực",
+    id: 'interior-1',
+    type: 'interior',
+    title: 'Thiết kế & Thi công Nội thất',
+    subtitle: 'Biến Ý Tưởng Thành Hiện Thực',
     description:
-      "Chuyên thiết kế thi công nội thất cao cấp: showroom, nhà hàng, văn phòng, cửa hàng. ALU, CNC, bảng hiệu chất lượng hàng đầu Việt Nam.",
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&h=1080&fit=crop",
-    cta: { text: "Xem dự án", href: "/noi-that/du-an" },
-    secondaryCta: { text: "Nhận báo giá", href: "/noi-that/bao-gia" },
+      'Chuyên thiết kế thi công nội thất cao cấp: showroom, nhà hàng, văn phòng, cửa hàng. ALU, CNC, bảng hiệu chất lượng hàng đầu Việt Nam.',
+    image:
+      'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&h=1080&fit=crop',
+    cta: { text: 'Xem dự án', href: '/noi-that/du-an' },
+    secondaryCta: { text: 'Nhận báo giá', href: '/noi-that/bao-gia' },
   },
   {
-    id: "staffing-1",
-    type: "staffing",
-    title: "Cung ứng Nhân sự Chuyên nghiệp",
-    subtitle: "Kết Nối Nhân Tài",
+    id: 'staffing-1',
+    type: 'staffing',
+    title: 'Cung ứng Nhân sự Chuyên nghiệp',
+    subtitle: 'Kết Nối Nhân Tài',
     description:
-      "Giải pháp cung ứng nhân sự toàn diện: kho vận, logistics, sản xuất, lao động phổ thông. Nhanh chóng, tin cậy, chi phí tối ưu.",
-    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&h=1080&fit=crop",
-    cta: { text: "Tìm việc làm", href: "/nhan-su/viec-lam" },
-    secondaryCta: { text: "Doanh nghiệp", href: "/nhan-su/doanh-nghiep" },
+      'Giải pháp cung ứng nhân sự toàn diện: kho vận, logistics, sản xuất, lao động phổ thông. Nhanh chóng, tin cậy, chi phí tối ưu.',
+    image:
+      'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&h=1080&fit=crop',
+    cta: { text: 'Tìm việc làm', href: '/nhan-su/viec-lam' },
+    secondaryCta: { text: 'Doanh nghiệp', href: '/nhan-su/doanh-nghiep' },
   },
 ];
 
@@ -70,11 +72,13 @@ export function HeroSection() {
 
   const prevSlide = () => {
     setDirection(-1);
-    setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+    setCurrentSlide(
+      (prev) => (prev - 1 + heroSlides.length) % heroSlides.length,
+    );
   };
 
   const slide = heroSlides[currentSlide];
-  const isInterior = slide.type === "interior";
+  const isInterior = slide.type === 'interior';
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -94,7 +98,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[90vh] lg:min-h-screen overflow-hidden">
+    <section className="relative min-h-[90vh] lg:min-h-screen overflow-hidden !px-4">
       {/* Background Slides */}
       <AnimatePresence initial={false} custom={direction}>
         <motion.div
@@ -105,7 +109,7 @@ export function HeroSection() {
           animate="center"
           exit="exit"
           transition={{
-            x: { type: "spring", stiffness: 300, damping: 30 },
+            x: { type: 'spring', stiffness: 300, damping: 30 },
             opacity: { duration: 0.4 },
           }}
           className="absolute inset-0"
@@ -118,10 +122,10 @@ export function HeroSection() {
           {/* Overlay */}
           <div
             className={cn(
-              "absolute inset-0",
+              'absolute inset-0',
               isInterior
-                ? "bg-gradient-to-r from-[#1a365d]/95 via-[#1a365d]/80 to-transparent"
-                : "bg-gradient-to-r from-[#065f46]/95 via-[#065f46]/80 to-transparent"
+                ? 'bg-gradient-to-r from-[#1a365d]/95 via-[#1a365d]/80 to-transparent'
+                : 'bg-gradient-to-r from-[#065f46]/95 via-[#065f46]/80 to-transparent',
             )}
           />
           {/* Pattern Overlay */}
@@ -130,7 +134,7 @@ export function HeroSection() {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="relative z-10 flex items-center min-h-[90vh] lg:min-h-screen">
+      <div className="relative z-10 flex items-center min-h-[90vh] lg:min-h-screen ">
         <Container>
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Text Content */}
@@ -147,8 +151,8 @@ export function HeroSection() {
                 <div className="flex items-center gap-3 mb-6">
                   <div
                     className={cn(
-                      "w-12 h-12 rounded-xl flex items-center justify-center",
-                      isInterior ? "bg-[#c9a962]" : "bg-[#34d399]"
+                      'w-12 h-12 rounded-xl flex items-center justify-center',
+                      isInterior ? 'bg-[#c9a962]' : 'bg-[#34d399]',
                     )}
                   >
                     {isInterior ? (
@@ -159,13 +163,13 @@ export function HeroSection() {
                   </div>
                   <span
                     className={cn(
-                      "px-4 py-1.5 rounded-full text-sm font-medium",
+                      'px-4 py-1.5 rounded-full text-sm font-medium',
                       isInterior
-                        ? "bg-[#c9a962]/20 text-[#c9a962]"
-                        : "bg-[#34d399]/20 text-[#34d399]"
+                        ? 'bg-[#c9a962]/20 text-[#c9a962]'
+                        : 'bg-[#34d399]/20 text-[#34d399]',
                     )}
                   >
-                    {isInterior ? "Nội thất" : "Nhân sự"}
+                    {isInterior ? 'Nội thất' : 'Nhân sự'}
                   </span>
                 </div>
 
@@ -177,8 +181,8 @@ export function HeroSection() {
                 {/* Subtitle */}
                 <p
                   className={cn(
-                    "text-xl md:text-2xl font-medium mb-6",
-                    isInterior ? "text-[#c9a962]" : "text-[#34d399]"
+                    'text-xl md:text-2xl font-medium mb-6',
+                    isInterior ? 'text-[#c9a962]' : 'text-[#34d399]',
                   )}
                 >
                   {slide.subtitle}
@@ -190,11 +194,12 @@ export function HeroSection() {
                 </p>
 
                 {/* CTAs */}
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4 !mb-2">
                   <Link href={slide.cta.href}>
                     <Button
-                      variant={isInterior ? "interior" : "staffing"}
+                      variant={isInterior ? 'interior' : 'staffing'}
                       size="lg"
+                      className="!p-2"
                       rightIcon={<ArrowRight className="w-5 h-5" />}
                     >
                       {slide.cta.text}
@@ -205,7 +210,7 @@ export function HeroSection() {
                       <Button
                         variant="outline"
                         size="lg"
-                        className="border-white/30 text-white hover:bg-white/10"
+                        className="!p-[6px] border-white/30 text-white hover:bg-white/10"
                         leftIcon={<Play className="w-5 h-5" />}
                       >
                         {slide.secondaryCta.text}
@@ -270,15 +275,15 @@ export function HeroSection() {
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="space-y-4"
+                className="space-y-4 flex flex-col gap-4"
               >
                 <Link
                   href="/noi-that"
                   className={cn(
-                    "group block p-6 rounded-2xl backdrop-blur-md transition-all duration-300",
+                    'group block !p-6 rounded-2xl backdrop-blur-md transition-all duration-300',
                     currentSlide === 0
-                      ? "bg-white/20 border border-white/30"
-                      : "bg-white/10 hover:bg-white/20"
+                      ? 'bg-white/20 border border-white/30'
+                      : 'bg-white/10 hover:bg-white/20',
                   )}
                   onClick={() => setCurrentSlide(0)}
                 >
@@ -299,10 +304,10 @@ export function HeroSection() {
                 <Link
                   href="/nhan-su"
                   className={cn(
-                    "group block p-6 rounded-2xl backdrop-blur-md transition-all duration-300",
+                    'group block !p-6 rounded-2xl backdrop-blur-md transition-all duration-300',
                     currentSlide === 1
-                      ? "bg-white/20 border border-white/30"
-                      : "bg-white/10 hover:bg-white/20"
+                      ? 'bg-white/20 border border-white/30'
+                      : 'bg-white/10 hover:bg-white/20',
                   )}
                   onClick={() => setCurrentSlide(1)}
                 >
@@ -339,13 +344,15 @@ export function HeroSection() {
                     setCurrentSlide(i);
                   }}
                   className={cn(
-                    "transition-all duration-300",
+                    'transition-all duration-300 p-2',
                     currentSlide === i
                       ? cn(
-                          "w-10 h-3 rounded-full",
-                          s.type === "interior" ? "bg-[#c9a962]" : "bg-[#34d399]"
+                          'w-10 h-3 rounded-full',
+                          s.type === 'interior'
+                            ? 'bg-[#c9a962]'
+                            : 'bg-[#34d399]',
                         )
-                      : "w-3 h-3 rounded-full bg-white/50 hover:bg-white/70"
+                      : 'w-3 h-3 rounded-full bg-white/50 hover:bg-white/70',
                   )}
                   aria-label={`Slide ${i + 1}`}
                 />
@@ -353,7 +360,7 @@ export function HeroSection() {
             </div>
 
             {/* Arrow Controls */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2 w-full">
               <button
                 onClick={prevSlide}
                 className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-colors"
@@ -379,10 +386,10 @@ export function HeroSection() {
           <button
             onClick={() => setCurrentSlide(0)}
             className={cn(
-              "flex-1 py-3 rounded-xl font-medium transition-all",
+              'flex-1 py-3 rounded-xl font-medium transition-all',
               currentSlide === 0
-                ? "bg-[#c9a962] text-[#1a365d]"
-                : "bg-white/10 text-white"
+                ? 'bg-[#c9a962] text-[#1a365d]'
+                : 'bg-white/10 text-white',
             )}
           >
             Nội thất
@@ -390,10 +397,10 @@ export function HeroSection() {
           <button
             onClick={() => setCurrentSlide(1)}
             className={cn(
-              "flex-1 py-3 rounded-xl font-medium transition-all",
+              'flex-1 py-3 rounded-xl font-medium transition-all',
               currentSlide === 1
-                ? "bg-[#34d399] text-[#065f46]"
-                : "bg-white/10 text-white"
+                ? 'bg-[#34d399] text-[#065f46]'
+                : 'bg-white/10 text-white',
             )}
           >
             Nhân sự
@@ -403,4 +410,3 @@ export function HeroSection() {
     </section>
   );
 }
-

@@ -1,34 +1,38 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { Container } from "@/components/ui";
-import { COMPANY_INFO, SOCIAL_LINKS, INTERIOR_NAV, STAFFING_NAV } from "@/lib/constants";
+import { Container } from '@/components/ui';
 import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Facebook,
-  Youtube,
-  Linkedin,
-  ExternalLink,
+  COMPANY_INFO,
+  INTERIOR_NAV,
+  SOCIAL_LINKS,
+  STAFFING_NAV,
+} from '@/lib/constants';
+import {
   ArrowUp,
-  FileText,
   Building2,
-  Users,
-  Briefcase,
+  Clock,
+  ExternalLink,
+  Facebook,
+  FileText,
+  Linkedin,
+  Mail,
+  MapPin,
   Newspaper,
-} from "lucide-react";
+  Phone,
+  Users,
+  Youtube,
+} from 'lucide-react';
+import Link from 'next/link';
 
 export function Footer() {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-gray-900 text-gray-300 !p-4">
       {/* Main Footer */}
       <div className="py-16">
         <Container>
@@ -175,12 +179,14 @@ export function Footer() {
                   <Phone className="w-5 h-5 text-[#34d399] flex-shrink-0" />
                   <div>
                     <a
-                      href={`tel:${COMPANY_INFO.hotline.replace(/\s/g, "")}`}
+                      href={`tel:${COMPANY_INFO.hotline.replace(/\s/g, '')}`}
                       className="text-white font-semibold text-lg hover:text-[#34d399] transition-colors"
                     >
                       {COMPANY_INFO.hotline}
                     </a>
-                    <span className="block text-sm text-gray-500">Hotline 24/7</span>
+                    <span className="block text-sm text-gray-500">
+                      Hotline 24/7
+                    </span>
                   </div>
                 </li>
                 <li className="flex items-center gap-3">
@@ -194,9 +200,7 @@ export function Footer() {
                 </li>
                 <li className="flex items-center gap-3">
                   <Clock className="w-5 h-5 text-gray-500 flex-shrink-0" />
-                  <span className="text-gray-400">
-                    T2 - T7: 8:00 - 18:00
-                  </span>
+                  <span className="text-gray-400">T2 - T7: 8:00 - 18:00</span>
                 </li>
               </ul>
 
@@ -210,7 +214,9 @@ export function Footer() {
                     <span className="block text-white font-medium">
                       Hồ sơ năng lực
                     </span>
-                    <span className="block text-sm text-gray-500">PDF • 5.2 MB</span>
+                    <span className="block text-sm text-gray-500">
+                      PDF • 5.2 MB
+                    </span>
                   </div>
                   <a
                     href="/documents/company-profile.pdf"
@@ -263,4 +269,3 @@ export function Footer() {
     </footer>
   );
 }
-
