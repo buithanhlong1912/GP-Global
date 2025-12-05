@@ -22,15 +22,15 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: "shortDescription",
+      name: "description",
       title: "Mô tả ngắn",
       type: "text",
       rows: 2,
       validation: (Rule) => Rule.required().max(200),
     }),
     defineField({
-      name: "description",
-      title: "Mô tả chi tiết",
+      name: "content",
+      title: "Nội dung chi tiết",
       type: "array",
       of: [
         { type: "block" },
@@ -42,6 +42,11 @@ export default defineType({
               name: "alt",
               type: "string",
               title: "Alt text",
+            },
+            {
+              name: "caption",
+              type: "string",
+              title: "Caption",
             },
           ],
         },
@@ -85,6 +90,28 @@ export default defineType({
       ],
     }),
     defineField({
+      name: "category",
+      title: "Danh mục",
+      type: "string",
+      options: {
+        list: [
+          // Interior categories
+          { title: "Thi công trọn gói", value: "thi-cong-tron-goi" },
+          { title: "Aluminum & ALU", value: "aluminum" },
+          { title: "CNC", value: "cnc" },
+          { title: "Bảng hiệu & Signage", value: "signage" },
+          { title: "Quầy bar", value: "bar-counter" },
+          { title: "Showroom", value: "showroom" },
+          // Staffing categories
+          { title: "Cung ứng nhân sự thời vụ", value: "temp-staffing" },
+          { title: "Nhân viên kho", value: "warehouse" },
+          { title: "Logistics", value: "logistics" },
+          { title: "Lao động phổ thông", value: "labor-outsource" },
+        ],
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "division",
       title: "Phân khúc",
       type: "string",
@@ -125,10 +152,85 @@ export default defineType({
       initialValue: 0,
     }),
     defineField({
-      name: "isActive",
-      title: "Đang hoạt động",
+      name: "process",
+      title: "Quy trình thực hiện",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "step", type: "string", title: "Tên bước" },
+            { name: "description", type: "text", title: "Mô tả" },
+            { name: "duration", type: "string", title: "Thời gian" },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: "faq",
+      title: "Câu hỏi thường gặp",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "question", type: "string", title: "Câu hỏi" },
+            { name: "answer", type: "text", title: "Câu trả lời" },
+          ],
+        },
+      ],
+    }),
+    defineField({
+      name: "portfolio",
+      title: "Dự án liên quan",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "project" }],
+        },
+      ],
+    }),
+    defineField({
+      name: "isFeatured",
+      title: "Nổi bật",
       type: "boolean",
-      initialValue: true,
+      initialValue: false,
+    }),
+    defineField({
+      name: "ctaText",
+      title: "Text button kêu gọi hành động",
+      type: "string",
+      initialValue: "Tư vấn ngay",
+    }),
+    defineField({
+      name: "ctaLink",
+      title: "Link kêu gọi hành động",
+      type: "string",
+    }),
+    defineField({
+      name: "status",
+      title: "Trạng thái",
+      type: "string",
+      options: {
+        list: [
+          { title: "Hoạt động", value: "active" },
+          { title: "Tạm ẩn", value: "inactive" },
+        ],
+      },
+      initialValue: "active",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "metaTitle",
+      title: "Meta Title (SEO)",
+      type: "string",
+    }),
+    defineField({
+      name: "metaDescription",
+      title: "Meta Description (SEO)",
+      type: "text",
+      rows: 3,
     }),
   ],
   preview: {

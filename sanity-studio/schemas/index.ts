@@ -11,8 +11,15 @@ import partner from "./partner";
 import teamMember from "./teamMember";
 import companyDocument from "./companyDocument";
 import siteSettings from "./siteSettings";
+import testimonial from "./testimonial";
+import faq from "./faq";
+import client from "./client";
+import homePage from "./homePage";
 
 export const schemaTypes = [
+  // Page Types
+  homePage,
+
   // Content Types
   project,
   job,
@@ -29,6 +36,9 @@ export const schemaTypes = [
   partner,
   teamMember,
   companyDocument,
+  testimonial,
+  faq,
+  client,
 
   // Settings
   siteSettings,

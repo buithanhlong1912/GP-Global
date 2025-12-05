@@ -1,0 +1,64 @@
+{
+  "name": "vietbuild-group",
+  "version": "1.0.0",
+  "description": "VIETBUILD GROUP - Interior Design & Workforce Supply Platform",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend",
+    "sanity-studio"
+  ],
+  "scripts": {
+    "setup:all": "npm run setup:deps && npm run setup:env",
+    "setup:deps": "npm install && npm run install:frontend && npm run install:backend && npm run install:sanity",
+    "setup:env": "node scripts/setup-env.js",
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && npm install",
+    "install:sanity": "cd sanity-studio && npm install",
+    "dev:all": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\" \"npm run dev:sanity\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:sanity": "cd sanity-studio && npm run dev",
+    "build:all": "npm run build:frontend && npm run build:backend && npm run build:sanity",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "build:sanity": "cd sanity-studio && npm run build",
+    "test:all": "npm run test:frontend && npm run test:backend",
+    "test:frontend": "cd frontend && npm run test",
+    "test:backend": "cd backend && npm run test",
+    "lint:all": "npm run lint:frontend && npm run lint:backend && npm run lint:sanity",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && npm run lint",
+    "lint:sanity": "cd sanity-studio && npm run lint",
+    "deploy:all": "npm run deploy:frontend && npm run deploy:backend && npm run deploy:sanity",
+    "deploy:frontend": "cd frontend && npm run deploy",
+    "deploy:backend": "cd backend && npm run deploy",
+    "deploy:sanity": "cd sanity-studio && npm run deploy",
+    "clean:all": "npm run clean:frontend && npm run clean:backend && npm run clean:sanity",
+    "clean:frontend": "cd frontend && rm -rf node_modules .next",
+    "clean:backend": "cd backend && rm -rf node_modules dist",
+    "clean:sanity": "cd sanity-studio && rm -rf node_modules dist",
+    "health:check": "node scripts/health-check.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "inquirer": "^9.2.15",
+    "chalk": "^5.3.0",
+    "dotenv": "^16.4.5"
+  },
+  "keywords": [
+    "nextjs",
+    "sanity",
+    "interior-design",
+    "workforce",
+    "recruitment",
+    "vietnam",
+    "business"
+  ],
+  "author": "VIETBUILD GROUP",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

@@ -1,30 +1,125 @@
-# VIETBUILD GROUP - Website Demo
+# 🏗️ VIETBUILD GROUP - Complete Business Platform
 
-Website demo hoàn chỉnh cho công ty hoạt động trong 2 lĩnh vực:
-- **Thiết kế & Thi công Nội thất** (showroom, nhà hàng, ALU, CNC, bảng hiệu...)
-- **Cung ứng Nhân sự & Giới thiệu việc làm** (kho vận, logistics, lao động...)
+> **Thiết kế Nội thất & Cung ứng Nhân sự Chuyên nghiệp**
 
-## 🚀 Tech Stack
+A comprehensive business platform built for VIETBUILD GROUP, specializing in interior design/construction and workforce supply/services. This is a production-ready, scalable system built with modern web technologies.
 
-### Frontend
-- **Next.js 14** (App Router)
-- **TypeScript**
-- **TailwindCSS**
-- **Framer Motion** (animations)
-- **Lucide React** (icons)
-- **Sanity Client** (CMS integration)
+## ✨ Key Features
 
-### CMS
-- **Sanity Studio** (headless CMS)
-- Custom schemas cho: Dự án, Việc làm, Ứng viên, Bài viết, Dịch vụ, v.v.
+### 🎨 **Interior Design Division**
+- **Showroom Design & Construction**
+- **Restaurant & Cafe Interior**
+- **Office & Retail Spaces**
+- **ALU & Aluminum Solutions**
+- **CNC Manufacturing**
+- **Signage & Branding**
+- **Bar Counters & Custom Furniture**
+- **Project Portfolio Gallery**
 
-### Backend API
-- **Node.js / Express**
-- **TypeScript**
-- **Sanity Client** (data mutations)
-- **Nodemailer** (email notifications)
-- **Express Validator** (validation)
-- **Rate Limiting & Security**
+### 👥 **Workforce Supply Division**
+- **Temporary Staffing Solutions**
+- **Warehouse & Logistics Personnel**
+- **Manufacturing Workers**
+- **General Labor Services**
+- **Job Search & Application System**
+- **Candidate Management**
+- **Staff Training & Placement**
+
+### 🛠️ **Technical Features**
+- **Dual-Business Support** - Handle both interior and staffing operations
+- **Content Management** - Full Sanity CMS integration
+- **Real-time Updates** - Live content synchronization
+- **Mobile Responsive** - Works perfectly on all devices
+- **SEO Optimized** - Built for search engine visibility
+- **High Performance** - Fast loading with global CDN
+- **Secure & Reliable** - Enterprise-grade security
+- **Email Notifications** - Automated communication system
+- **File Management** - Secure document uploads
+- **Admin Dashboard** - Complete management interface
+
+## 🏛️ System Architecture
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│                 │    │                 │    │                 │
+│   Frontend      │◄──►│   Sanity CMS    │◄──►│   Backend API   │
+│   (Next.js)     │    │   (Content)     │    │   (Node.js)     │
+│                 │    │                 │    │                 │
+│ • Modern UI/UX  │    │ • Headless CMS  │    │ • REST API      │
+│ • SEO Optimized │    │ • Real-time     │    │ • File Upload   │
+│ • Mobile First  │    │ • Image CDN     │    │ • Email Service │
+│ • Performance   │    │ • Collaboration│    │ • Validation    │
+│ • Components    │    │ • Version Ctrl  │    │ • Security      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+## 🚀 Quick Start
+
+### **Prerequisites**
+- Node.js 18+
+- Git
+- Modern code editor (VS Code recommended)
+
+### **🎯 5-Minute Setup**
+
+```bash
+# 1. Clone repository
+git clone <your-repo-url>
+cd demo-personal-prj
+
+# 2. Install all dependencies
+npm run setup:all
+
+# 3. Configure environment (interactive)
+npm run setup:env
+
+# 4. Start all services
+npm run dev:all
+
+# 5. Open in browser
+# Frontend: http://localhost:3000
+# Backend API: http://localhost:3001/health
+# Sanity Studio: http://localhost:3333
+```
+
+### **📋 What You'll Need**
+
+#### **Required Services**
+1. **Sanity.io** - Headless CMS ($99-399/month)
+2. **Cloudflare** - Hosting & CDN ($20-200/month)
+3. **Email Service** - SendGrid or Gmail ($15-50/month)
+4. **Domain** - Custom domain name ($12-25/year)
+
+#### **Setup Time**
+- **Development**: 15-30 minutes
+- **Production**: 2-4 hours
+
+## 🛠️ Technology Stack
+
+### **Frontend Technologies**
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **TailwindCSS** - Utility-first CSS framework
+- **Lucide React** - Beautiful icon library
+- **React Hook Form** - Form handling with validation
+- **React Query** - Data fetching and caching
+- **Zustand** - Lightweight state management
+
+### **Backend Technologies**
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web application framework
+- **TypeScript** - Type-safe server-side code
+- **Sanity Client** - Headless CMS integration
+- **Nodemailer** - Email sending service
+- **Multer** - File upload handling
+- **JWT** - Authentication tokens
+- **Zod** - Runtime type validation
+
+### **Infrastructure & Services**
+- **Sanity.io** - Headless CMS and content platform
+- **Cloudflare** - Global CDN, hosting, and security
+- **SendGrid** - Email delivery service
+- **Google Workspace** - Business email and collaboration
 
 ## 📁 Cấu trúc dự án
 

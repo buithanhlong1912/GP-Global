@@ -6,11 +6,28 @@ import compression from "compression";
 import rateLimit from "express-rate-limit";
 import dotenv from "dotenv";
 
+// Import middleware
+import { securityHeaders, refererCheck } from "./middleware/security";
+import { requestLogger, errorLogger } from "./utils/logger";
+import { errorHandler, validate } from "./middleware/validation";
+import {
+  generalLimiter,
+  contactLimiter,
+  applicationLimiter,
+  uploadLimiter,
+  quoteRequestLimiter,
+} from "./middleware/rateLimiter";
+
 // Import routes
 import contactRoutes from "./routes/contact";
 import jobRoutes from "./routes/jobs";
 import projectRoutes from "./routes/projects";
 import candidateRoutes from "./routes/candidates";
+import servicesRoutes from "./routes/services";
+import blogRoutes from "./routes/blog";
+import adminRoutes from "./routes/admin";
+import uploadRoutes from "./routes/upload";
+import teamRoutes from "./routes/team";
 
 // Load environment variables
 dotenv.config();
@@ -18,29 +35,28 @@ dotenv.config();
 const app: Express = express();
 const PORT = process.env.PORT || 3001;
 
-// Security middleware
-app.use(helmet());
+// Enhanced security middleware
+app.use(securityHeaders);
 
 // CORS configuration
+const allowedOrigins = (process.env.FRONTEND_URL || "http://localhost:3000").split(",");
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: allowedOrigins,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Request-ID"],
   })
 );
 
-// Rate limiting
-const limiter = rateLimit({
-  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || "900000"), // 15 minutes
-  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || "100"),
-  message: {
-    success: false,
-    message: "Quá nhiều yêu cầu, vui lòng thử lại sau.",
-  },
-});
-app.use(limiter);
+// General rate limiting
+app.use(generalLimiter);
+
+// Request logging
+app.use(requestLogger);
+
+// Referer checking for CSRF protection
+app.use(refererCheck(allowedOrigins));
 
 // Compression
 app.use(compression());
@@ -66,11 +82,19 @@ app.get("/health", (req: Request, res: Response) => {
   });
 });
 
-// API Routes
-app.use("/api/contact", contactRoutes);
+// API Routes with specific rate limiters
+app.use("/api/contact", contactLimiter, contactRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use("/api/projects", projectRoutes);
-app.use("/api/candidates", candidateRoutes);
+app.use("/api/candidates", applicationLimiter, candidateRoutes);
+app.use("/api/services", servicesRoutes);
+app.use("/api/blog", blogRoutes);
+app.use("/api/team", teamRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/upload", uploadLimiter, uploadRoutes);
+
+// Serve uploaded files
+app.use("/uploads", express.static("uploads"));
 
 // 404 handler
 app.use((req: Request, res: Response) => {
@@ -80,18 +104,9 @@ app.use((req: Request, res: Response) => {
   });
 });
 
-// Error handler
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.error("Error:", err);
-
-  res.status(500).json({
-    success: false,
-    message:
-      process.env.NODE_ENV === "production"
-        ? "Đã xảy ra lỗi, vui lòng thử lại sau"
-        : err.message,
-  });
-});
+// Error handlers (must be last)
+app.use(errorLogger);
+app.use(errorHandler);
 
 // Start server
 app.listen(PORT, () => {
