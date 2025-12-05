@@ -81,11 +81,11 @@ export default function InteriorPage() {
           }}
         />
 
-        <Container className="relative z-10 py-20">
+        <Container className="relative z-10 py-20 !px-4">
           <div className="max-w-3xl">
             <Badge
               variant="interior"
-              className="mb-6 bg-[#c9a962] text-[#1a365d]"
+              className="mb-6 bg-[#c9a962] text-[#1a365d] !p-2"
             >
               <Building2 className="w-4 h-4 mr-1" />
               Nội thất
@@ -99,12 +99,13 @@ export default function InteriorPage() {
               đầu. Từ showroom đến nhà hàng, từ ALU đến bảng hiệu - Chúng tôi
               làm được tất cả.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 !mb-2">
               <Link href="/noi-that/du-an">
                 <Button
                   variant="interior"
                   size="lg"
                   rightIcon={<ArrowRight className="w-5 h-5" />}
+                  className="!p-2"
                 >
                   Xem dự án
                 </Button>
@@ -113,7 +114,7 @@ export default function InteriorPage() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-white text-white hover:bg-white hover:text-[#1a365d]"
+                  className="border-white text-white hover:bg-white hover:text-[#1a365d] !p-[6px]"
                 >
                   Nhận báo giá miễn phí
                 </Button>
@@ -146,14 +147,14 @@ export default function InteriorPage() {
       </section>
 
       {/* Services Grid */}
-      <Section padding="xl">
+      <Section padding="xl" className="!p-4">
         <SectionHeader
           subtitle="Dịch vụ của chúng tôi"
           title="Giải Pháp Nội Thất Toàn Diện"
           description="Từ thiết kế đến thi công, từ ý tưởng đến thực tế - Chúng tôi cung cấp dịch vụ trọn gói"
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 !mt-4">
           {INTERIOR_SERVICES.map((service, index) => (
             <Link
               key={service.id}
@@ -162,10 +163,10 @@ export default function InteriorPage() {
             >
               <Card
                 variant="interactive"
-                className="h-full p-0 overflow-hidden"
+                className="h-full overflow-hidden !p-4"
               >
                 {/* Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 overflow-hidden rounded-t-2xl">
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
                     style={{
@@ -181,7 +182,7 @@ export default function InteriorPage() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="!py-4">
                   <h3 className="text-xl font-bold text-gray-900 font-heading mb-2 group-hover:text-[#1a365d] transition-colors">
                     {service.title}
                   </h3>
@@ -198,7 +199,7 @@ export default function InteriorPage() {
       </Section>
 
       {/* Process Section */}
-      <Section variant="gray" padding="xl">
+      <Section variant="gray" padding="xl" className="!p-4">
         <SectionHeader
           subtitle="Quy trình làm việc"
           title="4 Bước Để Có Không Gian Hoàn Hảo"
@@ -237,12 +238,12 @@ export default function InteriorPage() {
             <div key={item.step} className="relative">
               {/* Connector Line */}
               {item.step < 4 && (
-                <div className="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-[#c9a962]" />
+                <div className="hidden md:block absolute top-25 left-1/2 w-full h-0.5 bg-[#c9a962]" />
               )}
 
-              <div className="relative bg-white p-6 rounded-2xl text-center">
+              <div className="relative bg-white p-6 rounded-2xl text-center flex flex-col gap-2 items-center justify-center min-h-50 ">
                 {/* Step Number */}
-                <div className="w-20 h-20 mx-auto mb-4 bg-[#1a365d] rounded-full flex items-center justify-center text-white relative z-10">
+                <div className="w-20 h-20 mx-auto mb-4 bg-[#1a365d] rounded-full flex items-center justify-center text-white relative z-10 ">
                   <span className="text-2xl font-bold">{item.step}</span>
                 </div>
 
@@ -257,13 +258,13 @@ export default function InteriorPage() {
       </Section>
 
       {/* Featured Projects */}
-      <Section padding="xl">
+      <Section padding="xl" className="!p-4">
         <SectionHeader
           subtitle="Dự án tiêu biểu"
           title="Những Công Trình Ấn Tượng"
         />
 
-        <div className="grid md:grid-cols-3 gap-6 mb-10">
+        <div className="grid md:grid-cols-3 gap-6 mb-10 !mt-4">
           {featuredProjects.map((project) => (
             <Link
               key={project.id}
@@ -278,7 +279,7 @@ export default function InteriorPage() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-                <div className="absolute inset-x-0 bottom-0 p-6">
+                <div className="absolute inset-x-0 bottom-0 !px-4">
                   <Badge variant="interior" className="mb-3">
                     {project.category}
                   </Badge>
@@ -298,6 +299,7 @@ export default function InteriorPage() {
               variant="primary"
               size="lg"
               rightIcon={<ArrowRight className="w-5 h-5" />}
+              className="!p-2 !m-4"
             >
               Xem tất cả dự án
             </Button>
@@ -306,8 +308,8 @@ export default function InteriorPage() {
       </Section>
 
       {/* CTA Section */}
-      <Section variant="interior" padding="lg">
-        <div className="text-center max-w-3xl mx-auto">
+      <Section variant="interior" padding="lg" className="!py-4">
+        <div className="text-center mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-4">
             Bạn có dự án cần tư vấn?
           </h2>
@@ -315,12 +317,13 @@ export default function InteriorPage() {
             Liên hệ ngay để nhận báo giá miễn phí và tư vấn chuyên nghiệp từ đội
             ngũ của chúng tôi.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4 !mt-4">
             <Link href="/noi-that/bao-gia">
               <Button
                 variant="interior"
                 size="lg"
                 rightIcon={<ArrowRight className="w-5 h-5" />}
+                className="!p-2"
               >
                 Nhận báo giá ngay
               </Button>
@@ -329,7 +332,7 @@ export default function InteriorPage() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-[#1a365d]"
+                className="border-white text-white hover:bg-white hover:text-[#1a365d] !p-[6px]"
                 leftIcon={<Phone className="w-5 h-5" />}
               >
                 Hotline: 1900 1234
