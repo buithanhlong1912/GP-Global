@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import { Header, Footer, FloatingActions } from "@/components/layout";
-import { SEO_DEFAULTS } from "@/lib/constants";
-import "./globals.css";
+import { FloatingActions, Footer, Header } from '@/components/layout';
+import { SEO_DEFAULTS } from '@/lib/constants';
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SEO_DEFAULTS.siteUrl),
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    type: "website",
+    type: 'website',
     locale: SEO_DEFAULTS.locale,
     url: SEO_DEFAULTS.siteUrl,
     siteName: SEO_DEFAULTS.siteName,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: 'summary_large_image',
     title: SEO_DEFAULTS.defaultTitle,
     description: SEO_DEFAULTS.defaultDescription,
     images: [SEO_DEFAULTS.ogImage],
@@ -48,13 +48,13 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: 'your-google-verification-code',
   },
   alternates: {
     canonical: SEO_DEFAULTS.siteUrl,
@@ -63,30 +63,30 @@ export const metadata: Metadata = {
 
 // JSON-LD Structured Data
 const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "VIETBUILD GROUP",
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'VIETBUILD GROUP',
   description: SEO_DEFAULTS.defaultDescription,
   url: SEO_DEFAULTS.siteUrl,
   logo: `${SEO_DEFAULTS.siteUrl}/images/logo.png`,
   contactPoint: {
-    "@type": "ContactPoint",
-    telephone: "+84-1900-1234",
-    contactType: "customer service",
-    availableLanguage: ["Vietnamese", "English"],
+    '@type': 'ContactPoint',
+    telephone: '+84-1900-1234',
+    contactType: 'customer service',
+    availableLanguage: ['Vietnamese', 'English'],
   },
   address: {
-    "@type": "PostalAddress",
-    streetAddress: "Tầng 15, Tòa nhà Landmark 81, Vinhomes Central Park",
-    addressLocality: "Bình Thạnh",
-    addressRegion: "TP.HCM",
-    postalCode: "700000",
-    addressCountry: "VN",
+    '@type': 'PostalAddress',
+    streetAddress: 'Tầng 15, Tòa nhà Landmark 81, Vinhomes Central Park',
+    addressLocality: 'Bình Thạnh',
+    addressRegion: 'TP.HCM',
+    postalCode: '700000',
+    addressCountry: 'VN',
   },
   sameAs: [
-    "https://facebook.com/vietbuildgroup",
-    "https://linkedin.com/company/vietbuildgroup",
-    "https://youtube.com/@vietbuildgroup",
+    'https://facebook.com/vietbuildgroup',
+    'https://linkedin.com/company/vietbuildgroup',
+    'https://youtube.com/@vietbuildgroup',
   ],
 };
 
@@ -99,7 +99,11 @@ export default function RootLayout({
     <html lang="vi" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
@@ -113,7 +117,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col antialiased">
+      <body
+        className="min-h-screen flex flex-col antialiased"
+        suppressHydrationWarning
+      >
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

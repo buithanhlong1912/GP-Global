@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { Section, SectionHeader } from "@/components/ui";
-import { PARTNERS } from "@/lib/constants";
+import { Section, SectionHeader } from '@/components/ui';
+import { PARTNERS } from '@/lib/constants';
+import { motion } from 'framer-motion';
 
 export function PartnersSection() {
   // Duplicate for infinite scroll effect
@@ -16,7 +16,7 @@ export function PartnersSection() {
       />
 
       {/* Logo Carousel */}
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden !mt-4">
         {/* Gradient Masks */}
         <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
@@ -30,9 +30,9 @@ export function PartnersSection() {
           transition={{
             x: {
               repeat: Infinity,
-              repeatType: "loop",
+              repeatType: 'loop',
               duration: 30,
-              ease: "linear",
+              ease: 'linear',
             },
           }}
         >
@@ -51,12 +51,12 @@ export function PartnersSection() {
       </div>
 
       {/* Stats Row */}
-      <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
         {[
-          { value: "10+", label: "Năm hoạt động" },
-          { value: "1000+", label: "Dự án hoàn thành" },
-          { value: "500+", label: "Nhân viên" },
-          { value: "200+", label: "Đối tác doanh nghiệp" },
+          { value: '10+', label: 'Năm hoạt động' },
+          { value: '1000+', label: 'Dự án hoàn thành' },
+          { value: '500+', label: 'Nhân viên' },
+          { value: '200+', label: 'Đối tác doanh nghiệp' },
         ].map((stat, index) => (
           <motion.div
             key={stat.label}
@@ -76,4 +76,3 @@ export function PartnersSection() {
     </Section>
   );
 }
-

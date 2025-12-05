@@ -1,20 +1,20 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { Container } from "@/components/ui";
-import { MAIN_NAV, COMPANY_INFO } from "@/lib/constants";
+import { Container } from '@/components/ui';
+import { COMPANY_INFO, MAIN_NAV } from '@/lib/constants';
+import { cn } from '@/lib/utils';
 import {
-  Menu,
-  X,
-  Phone,
-  ChevronDown,
   Building2,
-  Users,
+  ChevronDown,
+  Menu,
+  Phone,
   Search,
-} from "lucide-react";
+  Users,
+  X,
+} from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,16 +23,16 @@ export function Header() {
   const pathname = usePathname();
 
   // Determine theme based on current path
-  const isInteriorSection = pathname.startsWith("/noi-that");
-  const isStaffingSection = pathname.startsWith("/nhan-su");
+  const isInteriorSection = pathname.startsWith('/noi-that');
+  const isStaffingSection = pathname.startsWith('/nhan-su');
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export function Header() {
   return (
     <>
       {/* Top Bar */}
-      <div className="hidden lg:block bg-gray-900 text-white text-sm py-2">
+      <div className="hidden lg:block bg-gray-900 text-white text-sm !p-4">
         <Container>
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
@@ -57,10 +57,10 @@ export function Header() {
               <Link
                 href="/noi-that"
                 className={cn(
-                  "flex items-center gap-1.5 px-3 py-1 rounded transition-colors",
+                  'flex items-center gap-1.5 px-3 py-1 rounded transition-colors',
                   isInteriorSection
-                    ? "bg-[#c9a962] text-[#1a365d]"
-                    : "hover:bg-white/10"
+                    ? 'bg-[#c9a962] text-[#1a365d]'
+                    : 'hover:bg-white/10',
                 )}
               >
                 <Building2 className="w-4 h-4" />
@@ -69,10 +69,10 @@ export function Header() {
               <Link
                 href="/nhan-su"
                 className={cn(
-                  "flex items-center gap-1.5 px-3 py-1 rounded transition-colors",
+                  'flex items-center gap-1.5 px-3 py-1 rounded transition-colors',
                   isStaffingSection
-                    ? "bg-[#34d399] text-[#065f46]"
-                    : "hover:bg-white/10"
+                    ? 'bg-[#34d399] text-[#065f46]'
+                    : 'hover:bg-white/10',
                 )}
               >
                 <Users className="w-4 h-4" />
@@ -86,10 +86,10 @@ export function Header() {
       {/* Main Header */}
       <header
         className={cn(
-          "sticky top-0 z-50 transition-all duration-300",
+          'sticky top-0 z-50 transition-all duration-300 !px-4',
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg"
-            : "bg-white shadow-sm"
+            ? 'bg-white/95 backdrop-blur-md shadow-lg'
+            : 'bg-white shadow-sm',
         )}
       >
         <Container>
@@ -125,19 +125,19 @@ export function Header() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-1 px-4 py-2 font-medium rounded-lg transition-colors",
+                      'flex items-center gap-1 !px-4 !py-2 font-medium rounded-lg transition-colors',
                       pathname === item.href ||
                         (item.children && pathname.startsWith(item.href))
-                        ? "text-[#1a365d] bg-gray-100"
-                        : "text-gray-700 hover:text-[#1a365d] hover:bg-gray-50"
+                        ? 'text-[#1a365d] bg-gray-100'
+                        : 'text-gray-700 hover:text-[#1a365d] hover:bg-gray-50',
                     )}
                   >
                     {item.label}
                     {item.children && (
                       <ChevronDown
                         className={cn(
-                          "w-4 h-4 transition-transform",
-                          activeDropdown === item.label && "rotate-180"
+                          'w-4 h-4 transition-transform',
+                          activeDropdown === item.label && 'rotate-180',
                         )}
                       />
                     )}
@@ -146,11 +146,11 @@ export function Header() {
                   {/* Dropdown Menu */}
                   {item.children && activeDropdown === item.label && (
                     <div className="absolute top-full left-0 pt-2 w-64">
-                      <div className="bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden">
+                      <div className="bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden !px-4 !py-2">
                         {item.children.map((child) => (
                           <div key={child.href}>
                             {child.children ? (
-                              <div className="px-4 py-2">
+                              <div className="!px-4 !py-2">
                                 <span className="text-xs font-semibold uppercase text-gray-400 tracking-wider">
                                   {child.label}
                                 </span>
@@ -170,8 +170,9 @@ export function Header() {
                               <Link
                                 href={child.href}
                                 className={cn(
-                                  "block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors",
-                                  pathname === child.href && "bg-gray-50 text-[#1a365d]"
+                                  'block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors',
+                                  pathname === child.href &&
+                                    'bg-gray-50 text-[#1a365d]',
                                 )}
                               >
                                 {child.label}
@@ -197,7 +198,7 @@ export function Header() {
 
               <Link
                 href="/lien-he"
-                className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-[#1a365d] text-white font-semibold rounded-lg hover:bg-[#2b4c7e] transition-colors shadow-lg"
+                className="hidden md:flex items-center gap-2 !px-5 !py-2 bg-[#1a365d] text-white font-semibold rounded-lg hover:bg-[#2b4c7e] transition-colors shadow-lg"
               >
                 <Phone className="w-4 h-4" />
                 Liên hệ
@@ -207,9 +208,13 @@ export function Header() {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="lg:hidden p-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
-                aria-label={isOpen ? "Đóng menu" : "Mở menu"}
+                aria-label={isOpen ? 'Đóng menu' : 'Mở menu'}
               >
-                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {isOpen ? (
+                  <X className="w-6 h-6" />
+                ) : (
+                  <Menu className="w-6 h-6" />
+                )}
               </button>
             </div>
           </div>
@@ -218,8 +223,8 @@ export function Header() {
         {/* Mobile Menu */}
         <div
           className={cn(
-            "lg:hidden overflow-hidden transition-all duration-300",
-            isOpen ? "max-h-[80vh] border-t border-gray-100" : "max-h-0"
+            'lg:hidden overflow-hidden transition-all duration-300',
+            isOpen ? 'max-h-[80vh] border-t border-gray-100' : 'max-h-0',
           )}
         >
           <div className="bg-white py-4 max-h-[70vh] overflow-y-auto">
@@ -229,10 +234,10 @@ export function Header() {
                 <Link
                   href="/noi-that"
                   className={cn(
-                    "flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-medium transition-colors",
+                    'flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-medium transition-colors',
                     isInteriorSection
-                      ? "bg-[#1a365d] text-white"
-                      : "bg-gray-100 text-gray-700"
+                      ? 'bg-[#1a365d] text-white'
+                      : 'bg-gray-100 text-gray-700',
                   )}
                 >
                   <Building2 className="w-5 h-5" />
@@ -241,10 +246,10 @@ export function Header() {
                 <Link
                   href="/nhan-su"
                   className={cn(
-                    "flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-medium transition-colors",
+                    'flex-1 flex items-center justify-center gap-2 py-3 rounded-lg font-medium transition-colors',
                     isStaffingSection
-                      ? "bg-[#065f46] text-white"
-                      : "bg-gray-100 text-gray-700"
+                      ? 'bg-[#065f46] text-white'
+                      : 'bg-gray-100 text-gray-700',
                   )}
                 >
                   <Users className="w-5 h-5" />
@@ -273,7 +278,10 @@ export function Header() {
                   Liên hệ ngay
                 </Link>
                 <p className="text-center text-gray-500 mt-3">
-                  Hotline: <strong className="text-gray-900">{COMPANY_INFO.hotline}</strong>
+                  Hotline:{' '}
+                  <strong className="text-gray-900">
+                    {COMPANY_INFO.hotline}
+                  </strong>
                 </p>
               </div>
             </Container>
@@ -308,10 +316,10 @@ function MobileNavItem({ item, pathname }: MobileNavItemProps) {
         <Link
           href={item.href}
           className={cn(
-            "flex-1 py-3 px-4 font-medium rounded-lg transition-colors",
+            'flex-1 py-3 px-4 font-medium rounded-lg transition-colors',
             pathname === item.href
-              ? "text-[#1a365d] bg-gray-100"
-              : "text-gray-700"
+              ? 'text-[#1a365d] bg-gray-100'
+              : 'text-gray-700',
           )}
         >
           {item.label}
@@ -323,8 +331,8 @@ function MobileNavItem({ item, pathname }: MobileNavItemProps) {
           >
             <ChevronDown
               className={cn(
-                "w-5 h-5 transition-transform",
-                isExpanded && "rotate-180"
+                'w-5 h-5 transition-transform',
+                isExpanded && 'rotate-180',
               )}
             />
           </button>
@@ -356,8 +364,8 @@ function MobileNavItem({ item, pathname }: MobileNavItemProps) {
                 <Link
                   href={child.href}
                   className={cn(
-                    "block py-2 px-4 text-gray-600 rounded-lg",
-                    pathname === child.href && "text-[#1a365d] bg-gray-50"
+                    'block py-2 px-4 text-gray-600 rounded-lg',
+                    pathname === child.href && 'text-[#1a365d] bg-gray-50',
                   )}
                 >
                   {child.label}
@@ -370,4 +378,3 @@ function MobileNavItem({ item, pathname }: MobileNavItemProps) {
     </div>
   );
 }
-

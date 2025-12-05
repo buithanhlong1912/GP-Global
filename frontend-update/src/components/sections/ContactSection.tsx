@@ -1,27 +1,27 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Section, SectionHeader, Input, Button } from "@/components/ui";
-import { COMPANY_INFO } from "@/lib/constants";
+import { Button, Input, Section, SectionHeader } from '@/components/ui';
+import { COMPANY_INFO } from '@/lib/constants';
+import { motion } from 'framer-motion';
 import {
+  CheckCircle,
+  Clock,
+  Download,
+  FileText,
+  Mail,
   MapPin,
   Phone,
-  Mail,
-  Clock,
   Send,
-  FileText,
-  Download,
-  CheckCircle,
-} from "lucide-react";
+} from 'lucide-react';
+import { useState } from 'react';
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -39,12 +39,12 @@ export function ContactSection() {
     // Reset after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
-      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
     }, 3000);
   };
 
   return (
-    <Section variant="interior" padding="xl">
+    <Section variant="interior" padding="xl" className="!mt-12 !p-4">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left - Contact Info */}
         <motion.div
@@ -61,8 +61,8 @@ export function ContactSection() {
           />
 
           {/* Contact Details */}
-          <div className="space-y-6 mt-8">
-            <div className="flex items-start gap-4">
+          <div className="space-y-6 mt-8 flex flex-col">
+            <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-[#c9a962] rounded-xl flex items-center justify-center flex-shrink-0">
                 <MapPin className="w-6 h-6 text-[#1a365d]" />
               </div>
@@ -72,14 +72,14 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
+            <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-[#c9a962] rounded-xl flex items-center justify-center flex-shrink-0">
                 <Phone className="w-6 h-6 text-[#1a365d]" />
               </div>
               <div>
                 <h4 className="font-semibold text-white mb-1">Hotline</h4>
                 <a
-                  href={`tel:${COMPANY_INFO.hotline.replace(/\s/g, "")}`}
+                  href={`tel:${COMPANY_INFO.hotline.replace(/\s/g, '')}`}
                   className="text-2xl font-bold text-[#c9a962] hover:underline"
                 >
                   {COMPANY_INFO.hotline}
@@ -88,7 +88,7 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
+            <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-[#c9a962] rounded-xl flex items-center justify-center flex-shrink-0">
                 <Mail className="w-6 h-6 text-[#1a365d]" />
               </div>
@@ -103,7 +103,7 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
+            <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-[#c9a962] rounded-xl flex items-center justify-center flex-shrink-0">
                 <Clock className="w-6 h-6 text-[#1a365d]" />
               </div>
@@ -113,28 +113,29 @@ export function ContactSection() {
                 <p className="text-white/70">Chủ nhật: Nghỉ</p>
               </div>
             </div>
-          </div>
-
-          {/* Company Profile Download */}
-          <div className="mt-10 p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 bg-[#c9a962] rounded-xl flex items-center justify-center">
-                <FileText className="w-7 h-7 text-[#1a365d]" />
+            {/* Company Profile Download */}
+            <div>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-[#c9a962] rounded-xl flex items-center justify-center">
+                  <FileText className="w-7 h-7 text-[#1a365d]" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-bold text-white">
+                    Hồ sơ năng lực công ty
+                  </h4>
+                  <p className="text-white/70 text-sm">
+                    Tải về để tìm hiểu thêm về chúng tôi
+                  </p>
+                </div>
+                <a
+                  href="/documents/company-profile.pdf"
+                  download
+                  className="flex items-center gap-2 !px-5 !py-2 bg-[#c9a962] text-[#1a365d] font-semibold rounded-lg hover:bg-white transition-colors"
+                >
+                  <Download className="w-5 h-5" />
+                  Tải PDF
+                </a>
               </div>
-              <div className="flex-1">
-                <h4 className="font-bold text-white">Hồ sơ năng lực công ty</h4>
-                <p className="text-white/70 text-sm">
-                  Tải về để tìm hiểu thêm về chúng tôi
-                </p>
-              </div>
-              <a
-                href="/documents/company-profile.pdf"
-                download
-                className="flex items-center gap-2 px-5 py-2.5 bg-[#c9a962] text-[#1a365d] font-semibold rounded-lg hover:bg-white transition-colors"
-              >
-                <Download className="w-5 h-5" />
-                Tải PDF
-              </a>
             </div>
           </div>
         </motion.div>
@@ -145,7 +146,7 @@ export function ContactSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
         >
-          <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl">
+          <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl !p-4">
             {isSubmitted ? (
               <div className="text-center py-12">
                 <div className="w-20 h-20 mx-auto bg-green-100 rounded-full flex items-center justify-center mb-6">
@@ -175,6 +176,7 @@ export function ContactSection() {
                         setFormData({ ...formData, name: e.target.value })
                       }
                       required
+                      className="!px-2"
                     />
                     <Input
                       label="Số điện thoại"
@@ -186,6 +188,7 @@ export function ContactSection() {
                         setFormData({ ...formData, phone: e.target.value })
                       }
                       required
+                      className="!px-2"
                     />
                   </div>
 
@@ -199,6 +202,7 @@ export function ContactSection() {
                       setFormData({ ...formData, email: e.target.value })
                     }
                     required
+                    className="!px-2"
                   />
 
                   <div>
@@ -212,7 +216,7 @@ export function ContactSection() {
                         setFormData({ ...formData, subject: e.target.value })
                       }
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#1a365d] focus:border-transparent"
+                      className="w-full rounded-lg border border-gray-300 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#1a365d] focus:border-transparent"
                     >
                       <option value="">-- Chọn chủ đề --</option>
                       <option value="interior">Tư vấn nội thất</option>
@@ -236,7 +240,7 @@ export function ContactSection() {
                         setFormData({ ...formData, message: e.target.value })
                       }
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1a365d] focus:border-transparent resize-none"
+                      className="w-full !px-2 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1a365d] focus:border-transparent resize-none"
                     />
                   </div>
 
@@ -252,10 +256,13 @@ export function ContactSection() {
                   </Button>
 
                   <p className="text-center text-sm text-gray-500">
-                    Bằng việc gửi form, bạn đồng ý với{" "}
-                    <a href="/chinh-sach" className="text-[#1a365d] hover:underline">
+                    Bằng việc gửi form, bạn đồng ý với{' '}
+                    <a
+                      href="/chinh-sach"
+                      className="text-[#1a365d] hover:underline"
+                    >
                       chính sách bảo mật
-                    </a>{" "}
+                    </a>{' '}
                     của chúng tôi.
                   </p>
                 </form>
@@ -267,4 +274,3 @@ export function ContactSection() {
     </Section>
   );
 }
-
