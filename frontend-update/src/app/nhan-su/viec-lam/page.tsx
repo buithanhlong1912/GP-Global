@@ -164,9 +164,9 @@ export default function JobsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-staffing-gradient py-12 lg:py-16">
+      <section className="bg-staffing-gradient !py-4 lg:py-16">
         <Container>
-          <div className="text-center max-w-3xl mx-auto mb-8">
+          <div className="text-center mx-auto mb-8">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-white mb-4">
               Tìm Việc Làm Phù Hợp
             </h1>
@@ -174,54 +174,52 @@ export default function JobsPage() {
               Hàng trăm cơ hội việc làm với mức lương hấp dẫn đang chờ bạn
             </p>
           </div>
-
-          {/* Search Box */}
-          <div className="bg-white rounded-2xl p-4 shadow-xl">
-            <div className="flex flex-col md:flex-row gap-4">
-              <div className="flex-1 relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                <input
-                  type="text"
-                  placeholder="Tìm kiếm việc làm, công ty..."
-                  value={searchKeyword}
-                  onChange={(e) => setSearchKeyword(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#065f46]"
-                />
-              </div>
-              <div className="flex gap-2">
-                <select
-                  value={selectedLocation}
-                  onChange={(e) => setSelectedLocation(e.target.value)}
-                  className="px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#065f46] min-w-[150px]"
-                >
-                  <option value="">Tất cả địa điểm</option>
-                  {LOCATIONS.map((loc) => (
-                    <option key={loc.id} value={loc.label}>
-                      {loc.label}
-                    </option>
-                  ))}
-                </select>
-                <Button
-                  variant="staffing"
-                  className="px-8"
-                  leftIcon={<Search className="w-5 h-5" />}
-                >
-                  Tìm kiếm
-                </Button>
-              </div>
-            </div>
-          </div>
         </Container>
       </section>
-
+      {/* Search Box */}
+      <div className="bg-white !py-2 !px-4 shadow-xl">
+        <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex-1 relative">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Tìm kiếm việc làm, công ty..."
+              value={searchKeyword}
+              onChange={(e) => setSearchKeyword(e.target.value)}
+              className="w-full !pl-12 !pr-4 !py-2 rounded-lg border border-gray-200"
+            />
+          </div>
+          <div className="flex gap-2">
+            <select
+              value={selectedLocation}
+              onChange={(e) => setSelectedLocation(e.target.value)}
+              className="!px-2 rounded-lg border border-gray-200 min-w-[150px]"
+            >
+              <option value="">Tất cả địa điểm</option>
+              {LOCATIONS.map((loc) => (
+                <option key={loc.id} value={loc.label}>
+                  {loc.label}
+                </option>
+              ))}
+            </select>
+            <Button
+              variant="staffing"
+              className="!px-4"
+              leftIcon={<Search className="w-5 h-5" />}
+            >
+              Tìm kiếm
+            </Button>
+          </div>
+        </div>
+      </div>
       {/* Main Content */}
-      <Section padding="lg">
-        <div className="flex flex-col lg:flex-row gap-8">
+      <Section padding="lg" className="!mt-4 ">
+        <div className="flex flex-col lg:flex-row gap-2">
           {/* Sidebar Filters - Desktop */}
           <aside className="hidden lg:block w-72 flex-shrink-0">
-            <Card className="sticky top-24">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-gray-900">Bộ lọc</h3>
+            <Card className="h-full top-24 !p-4">
+              <div className="flex items-center justify-between !mb-2">
+                <h3 className="font-bold text-gray-900 text-lg">Bộ lọc</h3>
                 {(selectedCategory || selectedLocation || selectedType) && (
                   <button
                     onClick={clearFilters}
@@ -233,7 +231,7 @@ export default function JobsPage() {
               </div>
 
               {/* Category Filter */}
-              <div className="mb-6">
+              <div className="!mb-4">
                 <h4 className="font-medium text-gray-700 mb-3">Ngành nghề</h4>
                 <div className="space-y-2">
                   {JOB_CATEGORIES.map((cat) => (
@@ -262,7 +260,7 @@ export default function JobsPage() {
               </div>
 
               {/* Employment Type Filter */}
-              <div className="mb-6">
+              <div className="!mb-4">
                 <h4 className="font-medium text-gray-700 mb-3">Loại hình</h4>
                 <div className="space-y-2">
                   {EMPLOYMENT_TYPES.map((type) => (
@@ -358,9 +356,9 @@ export default function JobsPage() {
           </div>
 
           {/* Jobs List */}
-          <div className="flex-1">
+          <div className="flex-1 !py-4">
             {/* Results Header */}
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between !mb-4 !px-4">
               <p className="text-gray-600">
                 Tìm thấy{' '}
                 <strong className="text-gray-900">{filteredJobs.length}</strong>{' '}
@@ -374,7 +372,7 @@ export default function JobsPage() {
             </div>
 
             {/* Jobs Grid */}
-            <div className="space-y-4">
+            <div className="space-y-4 flex flex-col gap-4 !px-4">
               {filteredJobs.map((job, index) => (
                 <motion.div
                   key={job.id}
@@ -385,7 +383,7 @@ export default function JobsPage() {
                   <Link href={`/nhan-su/viec-lam/${job.id}`}>
                     <Card
                       variant="interactive"
-                      className="group flex flex-col md:flex-row gap-4"
+                      className="group flex flex-col justify-center items-center !p-2 md:flex-row gap-4"
                     >
                       {/* Company Logo */}
                       <div className="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -444,7 +442,7 @@ export default function JobsPage() {
 
                       {/* Action */}
                       <div className="flex md:flex-col items-center gap-2 md:gap-4">
-                        <Badge variant="staffing">
+                        <Badge variant="staffing" className="!p-2">
                           {
                             EMPLOYMENT_TYPES.find(
                               (t) => t.id === job.employmentType,
@@ -464,8 +462,8 @@ export default function JobsPage() {
 
             {/* Load More */}
             {filteredJobs.length > 0 && (
-              <div className="mt-10 text-center">
-                <Button variant="outline" size="lg">
+              <div className="!mt-4 text-center">
+                <Button variant="outline" size="lg" className="!p-2">
                   Xem thêm việc làm
                 </Button>
               </div>
@@ -473,7 +471,7 @@ export default function JobsPage() {
 
             {/* No Results */}
             {filteredJobs.length === 0 && (
-              <div className="text-center py-12">
+              <div className="text-center py-12 flex flex-col items-center justify-center">
                 <Briefcase className="w-16 h-16 mx-auto text-gray-300 mb-4" />
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   Không tìm thấy việc làm
@@ -481,7 +479,11 @@ export default function JobsPage() {
                 <p className="text-gray-600 mb-4">
                   Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm
                 </p>
-                <Button variant="staffing" onClick={clearFilters}>
+                <Button
+                  variant="staffing"
+                  onClick={clearFilters}
+                  className="!p-2"
+                >
                   Xóa bộ lọc
                 </Button>
               </div>
@@ -491,8 +493,8 @@ export default function JobsPage() {
       </Section>
 
       {/* CTA */}
-      <Section variant="staffing" padding="lg">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+      <Section variant="staffing" padding="lg" className="">
+        <div className="flex flex-col !p-4 md:flex-row items-center justify-between">
           <div>
             <h2 className="text-2xl font-bold text-white mb-2">
               Không tìm thấy việc phù hợp?
@@ -506,6 +508,7 @@ export default function JobsPage() {
               variant="staffing"
               size="lg"
               rightIcon={<ArrowRight className="w-5 h-5" />}
+              className="!p-2"
             >
               Đăng ký ứng viên
             </Button>

@@ -57,7 +57,7 @@ export function Header() {
               <Link
                 href="/noi-that"
                 className={cn(
-                  'flex items-center gap-1.5 px-3 py-1 rounded transition-colors',
+                  'flex items-center gap-1.5 !px-3 !py-1 rounded transition-colors',
                   isInteriorSection
                     ? 'bg-[#c9a962] text-[#1a365d]'
                     : 'hover:bg-white/10',
@@ -69,7 +69,7 @@ export function Header() {
               <Link
                 href="/nhan-su"
                 className={cn(
-                  'flex items-center gap-1.5 px-3 py-1 rounded transition-colors',
+                  'flex items-center gap-1.5 !px-3 !py-1 rounded transition-colors',
                   isStaffingSection
                     ? 'bg-[#34d399] text-[#065f46]'
                     : 'hover:bg-white/10',
