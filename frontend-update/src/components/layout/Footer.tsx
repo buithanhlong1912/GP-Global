@@ -221,7 +221,7 @@ export function Footer() {
                   <a
                     href="/documents/company-profile.pdf"
                     download
-                    className="p-2 bg-[#c9a962] text-gray-900 rounded-lg hover:bg-[#b8963d] transition-colors"
+                    className="!p-2 bg-[#c9a962] text-gray-900 rounded-lg hover:bg-[#b8963d] transition-colors"
                   >
                     <ExternalLink className="w-5 h-5" />
                   </a>

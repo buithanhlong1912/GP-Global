@@ -163,7 +163,7 @@ export function HeroSection() {
                   </div>
                   <span
                     className={cn(
-                      'px-4 py-1.5 rounded-full text-sm font-medium',
+                      '!px-4 !py-1.5 rounded-full text-sm font-medium',
                       isInterior
                         ? 'bg-[#c9a962]/20 text-[#c9a962]'
                         : 'bg-[#34d399]/20 text-[#34d399]',

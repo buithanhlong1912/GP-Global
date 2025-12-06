@@ -341,7 +341,7 @@ export default function QuotePage() {
 
                 {/* Description */}
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <h3 className="text-lg font-semibold text-gray-900 !mb-2 flex items-center gap-2">
                     <span className="w-8 h-8 bg-[#1a365d] text-white rounded-full flex items-center justify-center text-sm">
                       3
                     </span>
